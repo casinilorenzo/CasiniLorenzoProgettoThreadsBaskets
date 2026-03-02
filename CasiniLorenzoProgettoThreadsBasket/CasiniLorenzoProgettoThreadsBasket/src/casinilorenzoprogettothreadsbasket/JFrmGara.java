@@ -47,7 +47,6 @@ public class JFrmGara extends javax.swing.JFrame {
             fotoLabels[i] = new JLabel();
             fotoLabels[i].setPreferredSize(new Dimension(60, 60));
             fotoLabels[i].setBorder(BorderFactory.createLineBorder(COLORI[i], 2));
-            caricaFoto(fotoLabels[i], nomi[i]);
             customBars[i] = new BasketProgressBar(COLORI[i]);
             customBars[i].setPreferredSize(new Dimension(400, 50));
             JPanel riga = new JPanel(new FlowLayout(FlowLayout.LEFT, 8, 0));
@@ -67,26 +66,6 @@ public class JFrmGara extends javax.swing.JFrame {
 
         setSize(Math.max(getWidth(), 780), Math.max(getHeight(), 450));
         repaint();
-    }
-
-    private void caricaFoto(JLabel lbl, String nomeGiocatore) {
-        try {
-            String path = "/casinilorenzoprogettothreadsbasket/img/" + nomeGiocatore + ".png";
-            java.net.URL url = getClass().getResource(path);
-            if (url != null) {
-                ImageIcon icon = new ImageIcon(url);
-                Image scaled = icon.getImage().getScaledInstance(56, 56, Image.SCALE_SMOOTH);
-                lbl.setIcon(new ImageIcon(scaled));
-            } else {
-                lbl.setText(iniziali(nomeGiocatore));
-                lbl.setHorizontalAlignment(SwingConstants.CENTER);
-                lbl.setBackground(new Color(180, 180, 200));
-                lbl.setOpaque(true);
-            }
-        } catch (Exception e) {
-            lbl.setText(iniziali(nomeGiocatore));
-            lbl.setHorizontalAlignment(SwingConstants.CENTER);
-        }
     }
 
     private String iniziali(String nome) {
